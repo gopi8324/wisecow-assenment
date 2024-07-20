@@ -17,7 +17,7 @@ jobs:
           mkdir wisecow
           cp wisecow.sh wisecow/  
           cd wisecow
-          zip wisecow-file.zip your-file  
+          zip wisecow-file.zip wisecow  
         
       - name: Upload package
         uses: actions/upload-artifact@v2
