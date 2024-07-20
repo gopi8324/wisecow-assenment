@@ -15,7 +15,7 @@ jobs:
       - name: Package file
         run: |
           mkdir wisecow
-          cp wisecow-assenment/ wisecow/  
+          cp wisecow.sh wisecow/  
           cd wisecow
           zip wisecow-file.zip your-file  
         
