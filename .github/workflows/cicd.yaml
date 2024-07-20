@@ -1,20 +1,26 @@
+name: Package File
 
-name: wisecow CI/CD
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - main  
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  package:
+    runs-on: ubuntu-latest  
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: To run scripts 
-        uses: ./wisecow.sh
+      - name: Checkout code
+        uses: actions/checkout@v2  
+      - name: Package file
+        run: |
+          mkdir wisecow
+          cp wisecow-assenment/ wisecow/  
+          cd wisecow
+          zip wisecow-file.zip your-file  
+        
+      - name: Upload package
+        uses: actions/upload-artifact@v2
+        with:
+          name: packaged-file
+          path: wisecow/wisecow-file.zip  
