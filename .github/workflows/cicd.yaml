@@ -1,0 +1,26 @@
+name: Package File
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  package:
+    runs-on: ubuntu-latest  
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  
+      - name: Package file
+        run: |
+          mkdir wisecow
+          cp wisecow.sh wisecow/  
+          cd wisecow
+          zip wisecow-file.zip wisecow.sh 
+        
+      - name: Upload package
+        uses: actions/upload-artifact@v2
+        with:
+          name: packaged-file
+          path: wisecow/wisecow-file.zip  
